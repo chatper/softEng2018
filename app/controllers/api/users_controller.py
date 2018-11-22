@@ -9,7 +9,6 @@ from models.user import User
 @app.route('/api/v1.0/users', methods=['GET'])
 def home():
     q = User.query.all()
-    #users = [{'email': u.email, 'password': u.password} for u in q]
     users = [u.serialize for u in q]
     ret = [{key: u[key] for key in ['email', 'password']} for u in users]
     return make_response(jsonify(ret), 200)
@@ -31,7 +30,6 @@ def profile(user_id):
     q = User.query.filter_by(id=user_id).first()
     if q is None:
         return make_response(jsonify({'error': 'Not found'}), 404)
-    #existing_user = {'email': q.email, 'password': q.password}
     existing_user = q.serialize
     ret = {key: existing_user[key] for key in ['email', 'password']}
     return make_response(jsonify(ret), 200)
@@ -48,7 +46,7 @@ def delete(user_id):
 
 
 @app.route('/api/v1.0/users/<user_id>', methods=['PUT'])
-def updatePassword(user_id):
+def updateProfile(user_id):
     existing_user = User.query.filter_by(id=user_id).first()
     if existing_user is None:
         return make_response(jsonify({'error': 'Not found'}), 404)
@@ -59,8 +57,10 @@ def updatePassword(user_id):
 
 @app.route('/api/v1.0/users/login', methods=['POST'])
 def login():
-    existing_user = User.query.filter_by(
+    q = User.query.filter_by(
         email=request.json['email'], password=request.json['password']).first()
-    if existing_user is None:
+    if q is None:
         return make_response(jsonify({'error': 'Not found'}), 404)
-    return make_response(jsonify({}), 200)
+    existing_user = q.serialize
+    ret = {existing_user['id']}
+    return make_response(jsonify(ret), 200)
