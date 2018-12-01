@@ -1,1 +1,8 @@
-A Repo for learning purposes
+# Solidity web application
+Descrpition: TBD
+
+## Under construction
+
+### Modules
+* [back-end](back-end/README.md)
+* [front-end](front-end/README.md)
