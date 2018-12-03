@@ -17,10 +17,10 @@ class UserSchema(Schema):
     email = fields.Email(
         required=True,
         validate=validate.Email(error='Not a valid email address'))
+    # TODO: include load_only=True
     password = fields.Str(
         required=True,
-        validate=[validate.Length(min=4, max=40)],
-        load_only=True)
+        validate=[validate.Length(min=4, max=40)])
 
 
 class UserPasswordSchema(Schema):
