@@ -2,7 +2,7 @@ from flask import request, jsonify
 from main import app, db
 from models.user import User, user_schema, users_schema, user_password_schema
 from marshmallow import ValidationError, validate
-
+from werkzeug.exceptions import HTTPException
 
 def fail(msg, status_code):
     return (jsonify({'status': 'fail', 'errors': msg}), status_code)
@@ -10,6 +10,15 @@ def fail(msg, status_code):
 
 def success(msg, status_code):
     return (jsonify({'status': 'success', 'data': msg}), status_code)
+
+
+@app.errorhandler(Exception)
+def handle_error(e):
+    print("Server error:", e)
+    code = 500
+    if isinstance(e, HTTPException):
+        code = e.code
+    return jsonify(error=str(e)), code
 
 
 @app.route('/api/v1.0/users', methods=['GET'])
