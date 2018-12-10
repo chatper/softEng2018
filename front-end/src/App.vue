@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-link is-fullheight">
+  <section class="hero is-danger is-fullheight">
   <!-- Hero head: will stick at the top -->
   <div class="hero-head">
     <nav class="navbar">
@@ -26,7 +26,8 @@
   </div>
 
   <!-- Hero content: will be in the middle -->
-  <div class="hero-body">
+  <div class="hero-body" :style="{'background-image': `url(${require('./assets/hands.jpg')})`}">
+  <!-- <div class="hero-body"> -->
     <div id="app" class="container">
       <router-view></router-view>
     </div>
