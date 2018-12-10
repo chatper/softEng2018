@@ -8,10 +8,11 @@ Descrpition: TBD
 * [front-end](front-end/README.md)
 
 ### Development mode
-1. Install the dependecies of each module
-2. Run back-end server
-3. Run front-end server
-4. Happy coding!!! 😎
+1. Clone this repository with `git clone https://github.com/PavlosTsourapas/Dummy-Repo`
+2. Install the dependecies of each module (back-end and front-end as described above)
+3. Run back-end server
+4. Run front-end server
+5. Happy coding!!! 😎
 
 ### Members
 * Δουκίδη Αγγελική-Ελένη / Doukidi Aggeliki-Eleni 
