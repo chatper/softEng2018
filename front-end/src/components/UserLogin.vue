@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { toasts } from '../mixins/user-toasts';
+import toasts from '../mixins/user-toasts';
 import { loginUser } from '../utils/users-api';
 
 export default {
@@ -58,11 +58,10 @@ export default {
           }
         })
         .catch((err) => {
-          if (err.response.data.status == 'fail') {
+          if (err.response.data.status === 'fail') {
             const msg = JSON.stringify(err.response.data.errors);
             this.errorToast(msg);
-          }
-          else {
+          } else {
             console.error(err);
             this.errorToast('Back-end server error!');
           }

@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { toasts } from '../mixins/user-toasts';
+import toasts from '../mixins/user-toasts';
 import { registerUser } from '../utils/users-api';
 
 export default {

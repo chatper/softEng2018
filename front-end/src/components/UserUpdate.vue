@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { toasts } from '../mixins/user-toasts';
+import toasts from '../mixins/user-toasts';
 import { updateUser } from '../utils/users-api';
 
 export default {

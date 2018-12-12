@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { toasts } from '../mixins/user-toasts';
+import toasts from '../mixins/user-toasts';
 import { deleteUser } from '../utils/users-api';
 
 export default {
